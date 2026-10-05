@@ -16,8 +16,6 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/anjali-sharma610)
 [![Email](https://img.shields.io/badge/Email-Say_Hello-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:anjalisharmaaa656@gmail.com)
 
-![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
-
 </div>
 
 ---
@@ -180,10 +178,6 @@ npm start
 | Project screenshots | Add images to `public/project/` |
 
 ---
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). It is built on an open-source portfolio template by Syahril Arfian Almazril, used under the MIT License.
 
 <div align="center">
   <p>Designed & built by Anjali</p>
