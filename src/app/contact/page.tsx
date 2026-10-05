@@ -129,23 +129,18 @@ function ContactForm() {
         e.preventDefault();
         setStatus('loading');
 
+        // The site is hosted statically (GitHub Pages), so open the visitor's email app
+        // with the message pre-filled instead of sending it from a server.
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+            const subject = formData.subject || `New message from ${formData.name}`;
+            const body = `${formData.message}
 
-            if (response.ok) {
-                setStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' });
-            } else {
-                setStatus('error');
-            }
+— ${formData.name} (${formData.email})`;
+            window.location.href = `mailto:${portfolioData.personal.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            setStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' });
         } catch (error) {
-            console.error('Error submitting form:', error);
+            console.error('Error opening email app:', error);
             setStatus('error');
         } finally {
             setTimeout(() => setStatus('idle'), 3000);

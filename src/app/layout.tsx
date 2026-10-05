@@ -108,7 +108,7 @@ export default async function RootLayout({
                                         {children}
                                     </ConditionalNavigation>
                                 </ArcPreloaderWrapper>
-                                <ChatBot headless />
+                                {process.env.NEXT_PUBLIC_ENABLE_CHAT === 'true' && <ChatBot headless />}
                             </ThemeAwareClickSpark>
                         </SmoothScrollProvider>
                     </I18nProvider>

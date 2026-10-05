@@ -3,9 +3,11 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
+        "predev": "node scripts/generate-image-manifest.mjs",
         "dev": "next dev",
+        "prebuild": "node scripts/generate-image-manifest.mjs",
         "build": "next build",
-        "start": "next start",
+        "start": "npx serve@latest out",
         "lint": "next lint"
     },
     "dependencies": {

@@ -4,7 +4,10 @@ import { ArrowLeft, Download, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePerformance } from '@/hooks/usePerformance';
-import { PdfViewer } from '@/components/ui/pdf-viewer';
+import dynamic from 'next/dynamic';
+
+// pdf.js needs browser APIs, so load the viewer on the client only
+const PdfViewer = dynamic(() => import('@/components/ui/pdf-viewer').then((m) => m.PdfViewer), { ssr: false });
 
 export default function ResumePage() {
     const { isLowPowerMode } = usePerformance();

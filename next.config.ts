@@ -5,8 +5,15 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+
+    // GitHub Pages: static export served from https://anjali61034.github.io
+    output: 'export',
+    trailingSlash: true,
+
     transpilePackages: ['three'],
+
     images: {
+        unoptimized: true,
         remotePatterns: [
             { protocol: 'https', hostname: 'cdn.jsdelivr.net' },
             { protocol: 'https', hostname: 'images.unsplash.com' },
