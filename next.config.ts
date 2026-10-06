@@ -4,7 +4,8 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
-    reactStrictMode: true,
+    // Strict Mode double-mounts components in dev, which breaks the 3D lanyard's physics joints
+    reactStrictMode: false,
 
     // GitHub Pages: static export served from https://anjali61034.github.io
     output: 'export',
