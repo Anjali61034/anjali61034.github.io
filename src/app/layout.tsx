@@ -32,7 +32,7 @@ const signature = Alex_Brush({
 
 export const metadata: Metadata = {
     title: {
-        default: 'Anjali | Full Stack Developer',
+        default: 'ANJALI | SHOPIFY DEVELOPER',
         template: '%s | Portfolio',
     },
     description: 'Anjali — Full Stack Developer, Shopify developer, mobile app developer, and computer science student from Delhi.',
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'en_US',
         url: 'https://your-domain.com',
-        title: 'Anjali | Full Stack Developer',
+        title: 'ANJALI | SHOPIFY DEVELOPER',
         description: 'Portfolio of Anjali — web, mobile, Shopify, and IoT development.',
         siteName: 'Portfolio',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Anjali | Full Stack Developer',
+        title: 'ANJALI | SHOPIFY DEVELOPER',
         description: 'A passionate developer building digital experiences that inspire.',
         creator: '@anjalisharma',
     },
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: '/favicon.svg', media: '(prefers-color-scheme: light)' },
-            { url: '/favicon.svg', media: '(prefers-color-scheme: dark)' },
+            { url: '/icon-light.svg', media: '(prefers-color-scheme: light)' },
+            { url: '/icon-dark.svg', media: '(prefers-color-scheme: dark)' },
         ],
     },
 };

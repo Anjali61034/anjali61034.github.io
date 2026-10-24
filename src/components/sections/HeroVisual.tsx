@@ -194,7 +194,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[clamp(3rem,11vw,13rem)] font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+                className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
               >
                 SHOPIFY &
               </motion.h1>
@@ -226,7 +226,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[clamp(3rem,11vw,13rem)] md:flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+                className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
               >
                 <span className="">SOFT</span>
                 <div
@@ -260,7 +260,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               initial={{ opacity: 0, y: 30 }}
               animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(3rem,11vw,13rem)] md:flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+              className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
             >
               <span className="">EN</span>
               <div

@@ -139,18 +139,30 @@ function Clock() {
     return <span className="font-mono tabular-nums">{time}</span>;
 }
 
+const galleryPhotos = [
+    { src: '/gallery/maitreyi-college.webp', alt: 'At Maitreyi College, University of Delhi', pos: 'center' },
+    { src: '/gallery/paytm.webp', alt: 'Visiting the Paytm office', pos: 'center' },
+    { src: '/work/agedarc-2.webp', alt: 'Aged Arc Shopify store', pos: 'center top' },
+    { src: '/gallery/intro.webp', alt: 'Shopify & Software Engineer', pos: 'left center' },
+    { src: '/work/ftgrails-2.webp', alt: 'FT Grails Shopify store', pos: 'center top' },
+    { src: '/gallery/services.webp', alt: 'What I build', pos: 'center' },
+];
+
 function GalleryStrip() {
     const [start, setStart] = useState(0);
-    const slots = 6;
+    const slots = galleryPhotos.length;
     return (
         <div className="relative">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[0, 1].map((o) => (
-                    <div key={o} className={`aspect-[4/3] rounded-3xl bg-muted flex flex-col items-center justify-center gap-2 text-muted-foreground ${o === 1 ? 'hidden sm:flex' : ''}`}>
-                        <ImageIcon className="h-8 w-8" strokeWidth={1.5} />
-                        <span className="text-[10px] font-semibold uppercase tracking-widest">Photo {((start + o) % slots) + 1}</span>
-                    </div>
-                ))}
+                {[0, 1].map((o) => {
+                    const photo = galleryPhotos[(start + o) % slots];
+                    return (
+                        <div key={o} className={`aspect-[4/3] overflow-hidden rounded-3xl bg-muted ${o === 1 ? 'hidden sm:block' : ''}`}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={photo.src} alt={photo.alt} loading="lazy" style={{ objectPosition: photo.pos }} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+                        </div>
+                    );
+                })}
             </div>
             <button type="button" aria-label="Previous" onClick={() => setStart((s) => (s - 1 + slots) % slots)} className="absolute -left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-background shadow-lg">
                 <ChevronLeft className="h-5 w-5" />
