@@ -296,19 +296,6 @@ export function Navbar() {
                                     ))}
                                 </nav>
 
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 20 }}
-                                    transition={{ delay: 0.5 }}
-                                    className="flex items-center gap-4 mt-12"
-                                >
-                                    {mounted && (
-                                        <AnimatedThemeToggler
-                                            className="px-6 py-6 glass-card text-sm font-medium hover:bg-muted/50 flex items-center gap-2"
-                                        />
-                                    )}
-                                </motion.div>
                             </div>
                         </motion.div >
                     )

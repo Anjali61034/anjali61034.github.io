@@ -24,11 +24,11 @@ function SocialTicker({ items, direction = 'left', speed = 30, isLowPowerMode = 
     const multipliedItems = [...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items];
 
     return (
-        <div className="flex overflow-hidden relative w-full group/ticker py-4 select-none">
+        <div className="flex overflow-hidden relative w-full group/ticker py-2 md:py-4 select-none">
             <motion.div
                 className="flex flex-nowrap hover:[animation-play-state:paused]"
                 initial={{ x: direction === 'left' ? 0 : '-50%' }}
-                animate={isLowPowerMode ? { x: direction === 'left' ? 0 : '-50%' } : { x: direction === 'left' ? '-50%' : 0 }}
+                animate={{ x: direction === 'left' ? '-50%' : 0 }}
                 transition={{
                     ease: "linear",
                     duration: speed * 4, // 4x duration because 8x duplication travels 4x further than 2x duplication
@@ -37,7 +37,7 @@ function SocialTicker({ items, direction = 'left', speed = 30, isLowPowerMode = 
                 style={{ width: "max-content" }}
             >
                 {multipliedItems.map((item, idx) => (
-                    <div key={`${item.name}-${idx}`} className="pr-4">
+                    <div key={`${item.name}-${idx}`} className="pr-3 md:pr-4">
                         <SocialCard item={item} />
                     </div>
                 ))}
@@ -50,10 +50,20 @@ function SocialTicker({ items, direction = 'left', speed = 30, isLowPowerMode = 
     );
 }
 
+// Fiverr has no icon in lucide, so draw its "fi" mark
+const FiverrIcon = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+        <text x="12" y="17.5" textAnchor="middle" fontSize="15" fontWeight="900" fontFamily="Arial, sans-serif">fi</text>
+    </svg>
+);
+
+const FIVERR_URL = "https://www.fiverr.com/anjali_sharmaa0";
+
 const socialIconsMap: Record<string, React.ElementType> = {
     github: Github,
     linkedin: Linkedin,
     email: Mail,
+    fiverr: FiverrIcon,
 };
 
 function SocialCard({ item }: { item: any }) {
@@ -63,23 +73,23 @@ function SocialCard({ item }: { item: any }) {
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex h-[140px] w-[280px] flex-col justify-between rounded-3xl border border-neutral-200 dark:border-white/5 bg-white dark:bg-white/[0.02] p-6 shadow-sm dark:shadow-2xl transition-all hover:bg-neutral-50 dark:hover:bg-white/5 hover:border-neutral-300 hover:scale-[1.02] hover:-translate-y-1 backdrop-blur-md overflow-hidden flex-shrink-0"
+            className="group relative flex h-[96px] w-[200px] md:h-[140px] md:w-[280px] flex-col justify-between rounded-2xl md:rounded-3xl border border-neutral-200 dark:border-white/5 bg-white dark:bg-white/[0.02] p-3.5 md:p-6 shadow-sm dark:shadow-2xl transition-all hover:bg-neutral-50 dark:hover:bg-white/5 hover:border-neutral-300 hover:scale-[1.02] hover:-translate-y-1 backdrop-blur-md overflow-hidden flex-shrink-0"
         >
             <div className="absolute -top-6 -right-6 p-6 opacity-[0.03] group-hover:opacity-10 transition-opacity transform group-hover:scale-125 duration-700">
-                <Icon className="w-40 h-40" />
+                <Icon className="w-24 h-24 md:w-40 md:h-40" />
             </div>
 
-            <div className="relative z-10 flex items-center gap-4">
-                <div className="relative h-12 w-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-inner ring-1 ring-white/5">
-                    <Icon className="w-6 h-6" />
+            <div className="relative z-10 flex items-center gap-2.5 md:gap-4">
+                <div className="relative h-8 w-8 md:h-12 md:w-12 flex items-center justify-center rounded-xl md:rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-inner ring-1 ring-white/5">
+                    <Icon className="w-4 h-4 md:w-6 md:h-6" />
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors tracking-tight">{item.name}</span>
-                    <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground/80">{item.username}</span>
+                    <span className="text-sm md:text-lg font-bold text-foreground group-hover:text-primary transition-colors tracking-tight">{item.name}</span>
+                    <span className="text-[10px] md:text-xs font-medium text-muted-foreground group-hover:text-foreground/80">{item.username}</span>
                 </div>
             </div>
 
-            <div className="relative z-10 flex items-center justify-between mt-auto pt-4 border-t border-border">
+            <div className="relative z-10 flex items-center justify-between mt-auto pt-2 md:pt-4 border-t border-border">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 group-hover:text-foreground/70 transition-colors">
                     Connect
                 </span>
@@ -283,6 +293,7 @@ const socialDescriptions: Record<string, string> = {
     GitHub: "Open Source",
     LinkedIn: "Professional",
     Email: "Say Hello",
+    Fiverr: "Hire Me",
 };
 
 import { usePerformance } from '@/hooks/usePerformance';
@@ -292,6 +303,15 @@ export default function ContactPage() {
     const { isLowPowerMode } = usePerformance();
 
     const getSocialItem = (platform: string) => {
+        if (platform === 'fiverr') {
+            return {
+                name: 'Fiverr',
+                username: '@anjali_sharmaa0',
+                body: socialDescriptions.Fiverr,
+                image: FiverrIcon,
+                url: FIVERR_URL
+            };
+        }
         if (platform === 'email') {
             return {
                 name: 'Email',
@@ -311,8 +331,8 @@ export default function ContactPage() {
         };
     };
 
-    const row1Real = ['linkedin', 'github', 'email'].map(getSocialItem);
-    const row2Real = ['email', 'linkedin', 'github'].map(getSocialItem);
+    const row1Real = ['fiverr', 'linkedin', 'github', 'email'].map(getSocialItem);
+    const row2Real = ['email', 'fiverr', 'linkedin', 'github'].map(getSocialItem);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -370,6 +390,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
                         {/* LEFT COLUMN: Lanyard */}
+                        {!isLowPowerMode && (
                         <div className="col-span-1 lg:col-span-4 relative lg:sticky top-0 h-[400px] md:h-[500px] lg:h-[90vh] pointer-events-none z-20">
                             {/* Anchor Slot/Bar for Lanyard */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 md:w-64 lg:w-96 h-2 bg-gradient-to-r from-transparent via-foreground/20 to-transparent blur-[2px] rounded-full z-30 mt-[-1px]" />
@@ -377,25 +398,16 @@ export default function ContactPage() {
 
                             <DeferredMount fallback={<div className="w-full h-full flex items-center justify-center opacity-50"><Loader2 className="w-8 h-8 animate-spin" /></div>}>
                                 <div className="w-full h-full pointer-events-auto overflow-visible">
-                                    {!isLowPowerMode ? (
-                                        <ErrorBoundary fallback={<div className="w-full h-full flex items-center justify-center opacity-50">Interactive Card Unavailable</div>}>
-                                            <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} isLowPowerMode={isLowPowerMode} />
-                                        </ErrorBoundary>
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center p-8">
-                                            <div className="relative w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 bg-primary/5">
-                                                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/20 italic font-serif">
-                                                    Archive ID // Static
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
+                                    <ErrorBoundary fallback={null}>
+                                        <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} isLowPowerMode={isLowPowerMode} />
+                                    </ErrorBoundary>
                                 </div>
                             </DeferredMount>
                         </div>
+                        )}
 
                         {/* RIGHT COLUMN: Content Stack */}
-                        <div className="col-span-1 lg:col-span-8 flex flex-col gap-16 relative z-10 pt-10 lg:pt-0">
+                        <div className={cn("col-span-1 flex flex-col gap-16 relative z-10 pt-10 lg:pt-0", isLowPowerMode ? "lg:col-span-12" : "lg:col-span-8")}>
 
                             {/* Social Connect */}
                             <motion.div
@@ -409,6 +421,27 @@ export default function ContactPage() {
                                     <SocialTicker items={row2Real} direction="left" speed={50} isLowPowerMode={isLowPowerMode} />
                                 </div>
                             </motion.div>
+
+                            {/* Fiverr CTA */}
+                            <a
+                                href={FIVERR_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 rounded-3xl border border-[#1dbf73]/30 bg-[#1dbf73]/10 px-5 py-4 md:px-8 md:py-6 transition-colors hover:bg-[#1dbf73]/20"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#1dbf73] text-white">
+                                        <FiverrIcon className="h-7 w-7" />
+                                    </div>
+                                    <div>
+                                        <div className="text-base md:text-lg font-bold text-foreground">Prefer to hire on Fiverr?</div>
+                                        <div className="text-xs md:text-sm text-muted-foreground">Safe payments and order tracking through my Fiverr profile</div>
+                                    </div>
+                                </div>
+                                <span className="flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#1dbf73] px-4 py-3 sm:py-2.5 text-xs md:text-sm font-bold text-white">
+                                    Hire on Fiverr <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                </span>
+                            </a>
 
                             {/* Contact Form */}
                             <motion.div
