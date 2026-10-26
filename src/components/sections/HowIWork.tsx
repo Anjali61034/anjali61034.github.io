@@ -25,7 +25,7 @@ const steps: Step[] = [
             "We start with a conversation about your business, your audience, and what success looks like so every decision has a clear purpose.",
         points: ["Project requirements", "Target audience", "Competitor research", "Goals & success metrics", "Timeline & budget"],
         outcome: "Clear project roadmap",
-        image: "/how-i-work/step-01.webp",
+        image: "/how-i-work/step-01-photo.webp",
         mobileImage: "/how-i-work/step-01-photo.webp",
     },
     {
@@ -35,7 +35,7 @@ const steps: Step[] = [
             "I map out the pages, user flows, and technical approach so the build is organised, predictable, and easy to scale later.",
         points: ["Sitemap & user flows", "Content structure", "Tech stack selection", "Shopify theme & app planning", "Milestones"],
         outcome: "Approved project plan",
-        image: "/how-i-work/step-02.webp",
+        image: "/how-i-work/step-02-photo.webp",
         mobileImage: "/how-i-work/step-02-photo.webp",
     },
     {
@@ -45,7 +45,7 @@ const steps: Step[] = [
             "Layouts are designed with clear hierarchy, consistent branding, and responsive behaviour across every screen size.",
         points: ["Wireframes", "UI design", "Responsive layouts", "Brand consistency", "Feedback round"],
         outcome: "Polished, approved design",
-        image: "/how-i-work/step-03.webp",
+        image: "/how-i-work/step-03-photo.webp",
         mobileImage: "/how-i-work/step-03-photo.webp",
     },
     {
@@ -55,7 +55,7 @@ const steps: Step[] = [
             "The design is turned into clean, fast, and maintainable code, with the integrations and features your business needs.",
         points: ["Clean, reusable code", "Shopify theme customisation", "Responsive development", "Integrations & APIs", "Performance optimisation"],
         outcome: "Fully functional website",
-        image: "/how-i-work/step-04.webp",
+        image: "/how-i-work/step-04-photo.webp",
         mobileImage: "/how-i-work/step-04-photo.webp",
     },
     {
@@ -65,7 +65,7 @@ const steps: Step[] = [
             "Everything is checked across devices and browsers so the website feels smooth, loads fast, and works exactly as expected.",
         points: ["Cross-browser testing", "Mobile responsiveness", "Speed & SEO checks", "Bug fixing", "Client review"],
         outcome: "Tested, launch-ready build",
-        image: "/how-i-work/step-05.webp",
+        image: "/how-i-work/step-05-m.webp",
         mobileImage: "/how-i-work/step-05-m.webp",
     },
     {
@@ -75,7 +75,7 @@ const steps: Step[] = [
             "Once everything is approved, I deploy the website smoothly and make sure the final setup is stable, secure, and ready to grow.",
         points: ["Final review", "Deployment setup", "Live environment check", "Post-launch monitoring", "Basic client guidance"],
         outcome: "Confident project launch",
-        image: "/how-i-work/step-06.webp",
+        image: "/how-i-work/step-06-m.webp",
         mobileImage: "/how-i-work/step-06-m.webp",
     },
 ];
