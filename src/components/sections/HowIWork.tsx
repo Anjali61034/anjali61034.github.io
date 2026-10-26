@@ -65,8 +65,8 @@ const steps: Step[] = [
             "Everything is checked across devices and browsers so the website feels smooth, loads fast, and works exactly as expected.",
         points: ["Cross-browser testing", "Mobile responsiveness", "Speed & SEO checks", "Bug fixing", "Client review"],
         outcome: "Tested, launch-ready build",
-        image: "/how-i-work/step-05-m.webp",
-        mobileImage: "/how-i-work/step-05-m.webp",
+        image: "/how-i-work/step-05-photo.webp",
+        mobileImage: "/how-i-work/step-05-photo.webp",
     },
     {
         eyebrow: "Go Live & Support",
@@ -75,8 +75,8 @@ const steps: Step[] = [
             "Once everything is approved, I deploy the website smoothly and make sure the final setup is stable, secure, and ready to grow.",
         points: ["Final review", "Deployment setup", "Live environment check", "Post-launch monitoring", "Basic client guidance"],
         outcome: "Confident project launch",
-        image: "/how-i-work/step-06-m.webp",
-        mobileImage: "/how-i-work/step-06-m.webp",
+        image: "/how-i-work/step-06-photo.webp",
+        mobileImage: "/how-i-work/step-06-photo.webp",
     },
 ];
 

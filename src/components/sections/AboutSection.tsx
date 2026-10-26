@@ -128,7 +128,7 @@ const TECH_LOGOS = [
 
 // --- Component 2: Core Engineering Panel ---
 // --- Component 1: Core Engineering Panel (Stats) ---
-const CoreEngineeringPanel = ({ scrollYProgress }: { scrollYProgress: any }) => {
+const CoreEngineeringPanel = ({ scrollYProgress, isMobile = false }: { scrollYProgress: any; isMobile?: boolean }) => {
     // Panel 1 exits between 0.45 and 0.65
     const opacity = useTransform(scrollYProgress, [0.45, 0.6], [1, 0]);
     const scale = useTransform(scrollYProgress, [0.45, 0.6], [1, 0.9]);
@@ -137,7 +137,7 @@ const CoreEngineeringPanel = ({ scrollYProgress }: { scrollYProgress: any }) => 
     return (
         <div className="w-screen h-full flex items-center justify-center bg-background transition-colors duration-500 overflow-hidden">
             <motion.div
-                style={{
+                style={isMobile ? { opacity } : {
                     opacity,
                     scale,
                     filter: `blur(${blur}px)`,
@@ -333,14 +333,17 @@ const ScrollHijackSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: sectionRef });
     const smoothProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 25, mass: 0.5 });
+    // Phones: follow the finger directly (no extra spring) so the panels do not wobble
+    const isMobile = useIsMobile();
+    const progress = isMobile ? scrollYProgress : smoothProgress;
     const [isComp2Visible, setIsComp2Visible] = React.useState(false);
     const [showBorder, setShowBorder] = React.useState(true);
 
     // Hooks moved to top level to avoid React Hook Rules violations
-    const borderOpacity = useTransform(smoothProgress, [0.1, 0.15], [1, 0]);
-    const xShift = useTransform(smoothProgress, [0, 0.1, 0.4, 1], ["0vw", "0vw", "-100vw", "-100vw"]);
+    const borderOpacity = useTransform(progress, [0.1, 0.15], [1, 0]);
+    const xShift = useTransform(progress, [0, 0.1, 0.4, 1], ["0vw", "0vw", "-100vw", "-100vw"]);
 
-    useMotionValueEvent(smoothProgress, "change", (v: any) => {
+    useMotionValueEvent(progress, "change", (v: any) => {
         // Hard toggle for the decorative border to ensure it's GONE
         if (v >= 0.20 && showBorder) setShowBorder(false);
         if (v < 0.15 && !showBorder) setShowBorder(true);
@@ -359,9 +362,10 @@ const ScrollHijackSection = () => {
     const exitProgress = useSpring(exitProgressRaw, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
 
-    const exitScale = useTransform(exitProgress, [0, 1], [1, 0.85]);
-    const exitOpacity = useTransform(exitProgress, [0, 1], [1, 0]); // Changed to 1 to ensure full fade out
-    const exitBorderRadius = useTransform(exitProgress, [0, 1], ["0px", "40px"]);
+    const exitSource = isMobile ? exitProgressRaw : exitProgress;
+    const exitScale = useTransform(exitSource, [0, 1], [1, 0.85]);
+    const exitOpacity = useTransform(exitSource, [0, 1], [1, 0]); // Changed to 1 to ensure full fade out
+    const exitBorderRadius = useTransform(exitSource, [0, 1], ["0px", "40px"]);
 
     return (
         <div ref={sectionRef} className="relative h-[600vh]">
@@ -393,10 +397,10 @@ const ScrollHijackSection = () => {
                         }}
                     >
                         <div className="h-full w-screen flex-shrink-0">
-                            <CoreEngineeringPanel scrollYProgress={smoothProgress} />
+                            <CoreEngineeringPanel scrollYProgress={progress} isMobile={isMobile} />
                         </div>
                         <div className="h-full w-screen flex-shrink-0">
-                            <IdentitySequence isVisible={isComp2Visible} scrollYProgress={smoothProgress} />
+                            <IdentitySequence isVisible={isComp2Visible} scrollYProgress={progress} />
                         </div>
                     </motion.div>
                 </motion.div>

@@ -296,7 +296,7 @@ export function Footer() {
                             animate="open"
                             exit="closed"
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed inset-0 z-[10000] bg-white dark:bg-black flex flex-col pt-0 overflow-hidden"
+                            className="fixed left-0 right-0 bottom-0 md:top-0 max-h-[78vh] md:max-h-none rounded-t-[2rem] md:rounded-none border-t border-zinc-200 dark:border-white/10 md:border-0 shadow-[0_-20px_60px_rgba(0,0,0,0.18)] md:shadow-none z-[10000] bg-white dark:bg-black flex flex-col pt-0 overflow-hidden"
                         >
                             <Spotlight
                                 gradientFirst={theme === 'dark'
@@ -314,18 +314,18 @@ export function Footer() {
                             />
 
                             {/* Top Marquee */}
-                            <div className="flex-shrink-0 pt-[5vh]">
+                            <div className="flex-shrink-0 pt-5 md:pt-[5vh]">
                                 <Marquee />
                             </div>
 
-                            <div className="flex-1 flex flex-col px-[8vw] pt-[4vh] pb-0 justify-between relative">
-                                <div className="flex-1 flex flex-col justify-center max-w-[1600px] w-full mx-auto relative">
+                            <div className="md:flex-1 flex flex-col px-[8vw] pt-6 md:pt-[4vh] pb-0 justify-between relative">
+                                <div className="md:flex-1 flex flex-col justify-center max-w-[1600px] w-full mx-auto relative pt-12 md:pt-0">
 
                                     {/* Close Button - Size-Locked with clamp */}
                                     <div className="absolute top-0 right-[-2vw] z-[10001]">
                                         <motion.button
                                             onClick={closeExpanded}
-                                            className="relative p-[clamp(12px,1.2vw,20px)] flex items-center justify-center"
+                                            className="relative p-2 md:p-[clamp(12px,1.2vw,20px)] flex items-center justify-center"
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: 0.3 }}
@@ -338,13 +338,13 @@ export function Footer() {
                                                 whileHover={{ rotate: 90 }}
                                                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
                                             >
-                                                <X className="w-[clamp(24px,2vw,32px)] h-[clamp(24px,2vw,32px)] text-white dark:text-black" strokeWidth={2.5} />
+                                                <X className="w-4 h-4 md:w-[clamp(24px,2vw,32px)] md:h-[clamp(24px,2vw,32px)] text-white dark:text-black" strokeWidth={2.5} />
                                             </motion.div>
                                         </motion.button>
                                     </div>
 
                                     {/* Main Grid - Forced 4-column layout regardless of zoom/screen */}
-                                    <div className="w-full grid grid-cols-4 gap-x-[5vw] gap-y-[4vh]">
+                                    <div className="w-full grid grid-cols-3 md:grid-cols-4 gap-x-[5vw] gap-y-[4vh]">
                                         <FooterColumn title={t('links')}>
                                             <FooterLink href="/" onClick={goHome}>{tNav('home')}</FooterLink>
                                             <FooterLink href="/resume" onClick={() => setIsExpanded(false)}>{tNav('resume')}</FooterLink>
@@ -388,7 +388,7 @@ export function Footer() {
                                         </FooterColumn>
 
                                         <FooterColumn title={t('version')}>
-                                            <p className="text-zinc-900 dark:text-white text-[1.2vw] min-text-[14px] font-medium tracking-tight">
+                                            <p className="text-zinc-900 dark:text-white text-xs md:text-[1.2vw] min-text-[14px] font-medium tracking-tight">
                                                 {t('versionEdition')}
                                             </p>
                                         </FooterColumn>
@@ -396,7 +396,7 @@ export function Footer() {
                                 </div>
 
                                 {/* Bottom Brand Name - fully visible */}
-                                <div className="mt-auto overflow-hidden flex-shrink-0 relative">
+                                <div className="mt-6 md:mt-auto overflow-hidden flex-shrink-0 relative">
                                     <motion.h2
                                         initial={{ opacity: 0, y: "100%" }}
                                         animate={isAboutExpanded ? { opacity: 0, y: "120%" } : { opacity: 1, y: "0%" }}

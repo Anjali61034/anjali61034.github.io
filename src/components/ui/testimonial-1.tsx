@@ -12,6 +12,11 @@ function Counter({ value, decimals = 0 }: { value: number; decimals?: number }) 
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
+    // Phones: show the final number straight away (no counting while scrolling)
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      count.set(value);
+      return;
+    }
     if (isInView) {
       const controls = animate(count, value, { duration: 2, ease: "easeOut" });
       return () => controls.stop();
