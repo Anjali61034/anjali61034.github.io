@@ -242,9 +242,9 @@ export const IdentitySequence = ({ scrollYProgress, isVisible }: IdentitySequenc
                     {/* Phase 4: Tech Stack & Tools Scrollers */}
                     <motion.div
                         style={{ opacity: textOpacity }}
-                        className="w-full max-w-[1700px] mx-auto py-20 flex flex-col gap-8 flex-shrink-0"
+                        className="w-full max-w-[1700px] mx-auto py-10 md:py-20 flex flex-col gap-2 md:gap-8 flex-shrink-0"
                     >
-                        <div className="px-8 md:px-16 lg:px-24 mb-6">
+                        <div className="px-8 md:px-16 lg:px-24 mb-2 md:mb-6 text-center md:text-left">
                             <h4 className="text-lg md:text-xl uppercase tracking-[0.15em] font-bold text-zinc-500 dark:text-zinc-400">
                                 What I Offer
                             </h4>

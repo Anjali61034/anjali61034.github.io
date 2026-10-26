@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 
 import Testimonial1 from "@/components/ui/testimonial-1";
 import { IdentitySequence } from "./IdentitySequence";
+import MobileAbout from "./MobileAbout";
 import ScrollAdventure from "@/components/ui/animated-scroll";
 import Bucket from "@/components/ui/bucket";
 import { HorizontalTimeline } from "@/components/ui/horizontal-timeline";
@@ -283,8 +284,8 @@ const AuditFunnel = () => {
     }, []);
 
     return (
-        <div ref={sectionRef} className="relative overflow-visible group min-h-[80vh] md:min-h-[120vh] flex items-center justify-center bg-background z-10 pb-10 md:pb-32">
-            <div className="flex flex-col items-center text-center py-20 md:py-40 space-y-12 md:space-y-16 pointer-events-none w-full origin-top">
+        <div ref={sectionRef} className="relative overflow-visible group min-h-0 md:min-h-[120vh] flex items-center justify-center bg-background z-10 pb-6 md:pb-32">
+            <div className="flex flex-col items-center text-center py-8 md:py-40 space-y-8 md:space-y-16 pointer-events-none w-full origin-top">
                 <motion.div
                     style={{ y: yExit, scale: scaleExit, opacity: opacityExit }}
                     className="space-y-6 md:space-y-10 flex flex-col items-center px-6 relative z-10 mix-blend-difference w-full"
@@ -307,7 +308,7 @@ const AuditFunnel = () => {
 
                 <motion.div
                     style={{ y: yExit, scale: scaleExit, opacity: opacityExit }}
-                    className="flex flex-col items-center gap-8 pt-12 pointer-events-auto w-full px-6"
+                    className="flex flex-col items-center gap-8 pt-4 md:pt-12 pointer-events-auto w-full px-6"
                 >
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -405,7 +406,6 @@ const ScrollHijackSection = () => {
 };
 
 export default function AboutSection() {
-    console.log('SHOWCASE MEMBERS:', showcaseMembers.map(m => m.id));
     const containerRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -427,8 +427,12 @@ export default function AboutSection() {
                 <div className="bg-background dark:bg-black transition-colors duration-500 pointer-events-auto relative">
 
                     <ScrollHijackSection />
-                    <ScrollAdventure />
-                    <div className="flex flex-col items-center w-full bg-background relative z-20 pt-32 pb-32">
+                    {/* Phone: project slideshow. Tablet/desktop: original scroll showcase */}
+                    <MobileAbout />
+                    <div className="hidden md:block">
+                        <ScrollAdventure />
+                    </div>
+                    <div className="hidden md:flex flex-col items-center w-full bg-background relative z-20 pt-32 pb-32">
                         {/* Certificate Showcase Section */}
                         <div className="w-full mt-8 md:mt-12 hidden">
                             {/* <CertificateShowcase /> */}

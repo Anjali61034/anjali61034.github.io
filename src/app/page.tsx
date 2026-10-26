@@ -54,7 +54,7 @@ const MetricCTAHijack = () => {
                     {/* Top shadow element to prevent downward bleeding into footer */}
                     <div className="absolute top-0 left-0 w-full h-10 dark:shadow-[0_-50px_150px_rgba(0,0,0,0.8)] -z-10" />
 
-                    <div className="h-[10vh]" />
+                    <div className="h-0 md:h-[10vh]" />
                     <CTASection />
                     <div className="h-20" />
                 </div>

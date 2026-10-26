@@ -31,11 +31,11 @@ const toolItems: Service[] = [
 ];
 
 const ScrollerItem = ({ name, icon: Icon, color }: Service) => (
-    <div className="flex items-center gap-4 px-12 py-4 transition-all duration-300 group">
-        <div className="relative w-10 h-10 flex-shrink-0 transition-all duration-500">
+    <div className="flex items-center gap-3 md:gap-4 px-6 md:px-12 py-2 md:py-4 transition-all duration-300 group">
+        <div className="relative w-7 h-7 md:w-10 md:h-10 flex-shrink-0 transition-all duration-500">
             <Icon className={cn("w-full h-full", color)} strokeWidth={1.75} aria-hidden />
         </div>
-        <p className="text-xl font-bold text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors duration-500 whitespace-nowrap">
+        <p className="text-base md:text-xl font-bold text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors duration-500 whitespace-nowrap">
             {name}
         </p>
     </div>
@@ -43,7 +43,7 @@ const ScrollerItem = ({ name, icon: Icon, color }: Service) => (
 
 export const BrandScroller = () => {
     return (
-        <div className="relative flex overflow-hidden py-2 w-full px-8 md:px-16 lg:px-24 [mask-image:linear-gradient(to_right,_rgba(0,_0,_0,_0),rgba(0,_0,_0,_1)_10%,rgba(0,_0,_0,_1)_90%,rgba(0,_0,_0,_0))]">
+        <div className="relative flex overflow-hidden py-1 md:py-2 w-full px-0 md:px-16 lg:px-24 [mask-image:linear-gradient(to_right,_rgba(0,_0,_0,_0),rgba(0,_0,_0,_1)_10%,rgba(0,_0,_0,_1)_90%,rgba(0,_0,_0,_0))]">
             <motion.div
                 animate={{
                     x: ["-50%", "0%"],
@@ -73,7 +73,7 @@ export const BrandScroller = () => {
 
 export const BrandScrollerReverse = () => {
     return (
-        <div className="relative flex overflow-hidden py-2 w-full px-8 md:px-16 lg:px-24 [mask-image:linear-gradient(to_right,_rgba(0,_0,_0,_0),rgba(0,_0,_0,_1)_10%,rgba(0,_0,_0,_1)_90%,rgba(0,_0,_0,_0))]">
+        <div className="relative flex overflow-hidden py-1 md:py-2 w-full px-0 md:px-16 lg:px-24 [mask-image:linear-gradient(to_right,_rgba(0,_0,_0,_0),rgba(0,_0,_0,_1)_10%,rgba(0,_0,_0,_1)_90%,rgba(0,_0,_0,_0))]">
             <motion.div
                 animate={{
                     x: ["0%", "-50%"],

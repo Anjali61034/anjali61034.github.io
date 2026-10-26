@@ -6,6 +6,16 @@ import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import { Book } from "@/components/ui/book";
 import { portfolioData } from "@/data/portfolio";
 import Link from "next/link";
+import { MobileSlider } from "@/components/ui/mobile-slider";
+
+const mobileGallery = [
+    { src: "/gallery/maitreyi.webp", alt: "Maitreyi College, University of Delhi", pos: "center 100%" },
+    { src: "/gallery/paytm.webp", alt: "Visiting Paytm", pos: "center" },
+    { src: "/work/agedarc-1.webp", alt: "Aged Arc store", pos: "top" },
+    { src: "/work/ftgrails-1.webp", alt: "FT Grails store", pos: "top" },
+    { src: "/work/allbirds-1.webp", alt: "Allbirds storefront", pos: "top" },
+    { src: "/work/dopamean-1.webp", alt: "Dopamean store", pos: "top" },
+];
 import { ArrowUpRight, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -71,28 +81,47 @@ export default function StatsSection({ scrollYProgress, showOnly }: { scrollYPro
             {/* Header for the Gallery Section */}
             {(showOnly === 'top' || !showOnly) && (
                 <>
-                    <div className="max-w-6xl mx-auto px-6 w-full pt-32 pb-16 text-center space-y-4">
+                    <div className="max-w-6xl mx-auto px-6 w-full pt-16 pb-10 md:pt-32 md:pb-16 text-center space-y-4">
                         <motion.h2
                             initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight"
                         >
-                            Journal & Insights
+                            Gallery & Moments
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-muted-foreground/80 text-lg md:text-xl font-medium max-w-2xl mx-auto"
+                            className="text-muted-foreground/80 text-base md:text-xl font-medium max-w-2xl mx-auto"
                         >
-                            A curated collection of technical articles, engineering blueprints, and reflections on building intelligent systems.
+                            Snapshots from college, internships and the stores I have built along the way.
                         </motion.p>
                     </div>
 
-                    {/* Immersive Zoom Parallax Component */}
-                    <div className="w-full">
+                    {/* Phone: swipe slideshow */}
+                    <div className="w-full md:hidden pb-6">
+                        <MobileSlider autoPlayMs={4000}>
+                            {mobileGallery.map((img) => (
+                                <div key={img.src} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted shadow-lg">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src={img.src} alt={img.alt} loading="lazy" className="h-full w-full object-cover" style={{ objectPosition: img.pos }} />
+                                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
+                                        <span className="text-sm font-semibold text-white">{img.alt}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </MobileSlider>
+                        <div className="mt-6 flex justify-center">
+                            <Link href="/gallery" className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-background">
+                                View Gallery <ArrowUpRight className="h-4 w-4" />
+                            </Link>
+                        </div>
+                    </div>
+                    {/* Immersive Zoom Parallax Component (tablet & desktop) */}
+                    <div className="w-full hidden md:block">
                         <ZoomParallax images={images}>
                             <Link 
                                 href="/gallery" 

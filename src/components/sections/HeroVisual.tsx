@@ -144,7 +144,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
         />
       </div>
 
-      <main className="relative flex-1 flex flex-col justify-center pt-40 pb-20 z-10 max-w-[105rem] w-full mx-auto">
+      <main className="relative flex-1 flex flex-col justify-center pt-28 pb-12 md:pt-40 md:pb-20 z-10 max-w-[105rem] w-full mx-auto">
         <div className="flex relative gap-4 px-6 md:items-center w-full flex-col justify-center">
 
           {/* Follow-Cursor Tooltip */}
@@ -176,12 +176,12 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-[10px] md:text-xs text-muted-foreground text-start md:text-right leading-relaxed max-w-[200px] md:max-w-[220px] font-medium uppercase tracking-[0.2em]"
+              className="text-[11px] md:text-xs text-muted-foreground text-start md:text-right leading-relaxed max-w-[260px] md:max-w-[220px] font-medium uppercase tracking-[0.2em] mb-3 md:mb-0"
             >
               Hi, I'm {personal.name}. I build Shopify stores, websites & apps people love to use.
             </motion.p>
             <div className="relative">
-              <div ref={githubRef} className="absolute -top-4 right-0 md:right-2 text-primary/60 hover:text-primary z-20 opacity-0">
+              <div ref={githubRef} className="hidden md:block absolute -top-4 right-0 md:right-2 text-primary/60 hover:text-primary z-20 opacity-0">
                 <a
                   href={personal.socialLinks.find(s => s.platform === 'GitHub')?.url}
                   target="_blank"
@@ -194,7 +194,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+                className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-0 md:px-4"
               >
                 SHOPIFY &
               </motion.h1>
@@ -204,7 +204,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
           {/* Line 2: SOFT [ICON] WARE */}
           <div className="md:flex gap-8 items-center relative">
             <div className="relative">
-              <div ref={linkedinRef} className="absolute -top-8 left-4 text-primary/60 hover:text-primary z-20 opacity-0">
+              <div ref={linkedinRef} className="hidden md:block absolute -top-8 left-4 text-primary/60 hover:text-primary z-20 opacity-0">
                 <a
                   href={personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url}
                   target="_blank"
@@ -213,7 +213,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                   <Linkedin size={32} />
                 </a>
               </div>
-              <div ref={instagramRef} className="absolute -bottom-12 right-24 md:right-36 text-primary/60 hover:text-primary z-20 opacity-0">
+              <div ref={instagramRef} className="hidden md:block absolute -bottom-12 right-24 md:right-36 text-primary/60 hover:text-primary z-20 opacity-0">
                 <a
                   href={personal.socialLinks.find(s => s.platform === 'Instagram')?.url}
                   target="_blank"
@@ -226,7 +226,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+                className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-0 md:px-4"
               >
                 <span className="">SOFT</span>
                 <div
@@ -260,7 +260,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               initial={{ opacity: 0, y: 30 }}
               animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+              className="text-[clamp(2.25rem,10.5vw,3rem)] md:text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-0 md:px-4"
             >
               <span className="">EN</span>
               <div
@@ -285,7 +285,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-[10px] md:text-xs text-muted-foreground pt-4 md:pt-8 leading-relaxed max-w-[250px] md:max-w-[200px] font-medium uppercase tracking-widest"
+              className="text-[11px] md:text-xs text-muted-foreground pt-5 md:pt-8 leading-relaxed max-w-[280px] md:max-w-[200px] font-medium uppercase tracking-widest"
             >
               Open to all forms of collaboration, regardless of location and language.
             </motion.p>
@@ -293,7 +293,32 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
         </div>
 
         {/* Separator Section */}
-        <div className="mx-auto max-w-[105rem] w-full px-8 md:px-20 mt-12 md:mt-24">
+        <div className="md:hidden w-full px-6 mt-10 space-y-6">
+          <div className="flex gap-3">
+            <Link href="/contact" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-foreground text-background py-3.5 text-xs font-black uppercase tracking-widest active:scale-[0.98] transition-transform">
+              Hire Me
+            </Link>
+            <Link href="/resume" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border py-3.5 text-xs font-black uppercase tracking-widest active:scale-[0.98] transition-transform">
+              Resume <ArrowDownRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="flex items-center gap-3">
+            {[
+              { Icon: Github, url: personal.socialLinks.find(s => s.platform === 'GitHub')?.url, label: 'GitHub' },
+              { Icon: Linkedin, url: personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url, label: 'LinkedIn' },
+              { Icon: Instagram, url: personal.socialLinks.find(s => s.platform === 'Instagram')?.url, label: 'Instagram' },
+            ].filter(l => l.url).map(({ Icon, url, label }) => (
+              <a key={label} href={url} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground/70">
+                <Icon size={18} />
+              </a>
+            ))}
+            <span className="ml-auto flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]" /> Open to work
+            </span>
+          </div>
+        </div>
+
+        <div className="hidden md:block mx-auto max-w-[105rem] w-full px-8 md:px-20 mt-12 md:mt-24">
           <div className="flex items-center gap-6">
             <Separator className="flex-1 h-[1px] bg-foreground/10 hidden md:block" />
             <Link
